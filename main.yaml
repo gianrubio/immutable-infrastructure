@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  any_errors_fatal: true
+  vars_files:
+    - group_vars/common.yaml
+  roles:
+    - role: VivaReal.aws-lc
+    - role: VivaReal.aws-elb
+    - role: VivaReal.aws-asg
+    - role: VivaReal.slack-notify

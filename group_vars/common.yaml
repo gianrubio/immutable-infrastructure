@@ -1,0 +1,33 @@
+vivareal_project_name: 'immutable-infraestructure'
+vivareal_build_version: "{{ ansible_env['CIRCLE_BUILD_NUM'] }}"
+vivareal_project_build: "{{ vivareal_project_name }}-{{ vivareal_build_version}}"
+vivareal_project_team: 'infra'
+vivareal_project_env: "{{ ansible_env['ENV'] | default('QA') }}"
+zabbix_metadata: "if-guild-ci"
+
+aws_resource_tags: {
+ 'Name': "{{ vivareal_project_build }}",
+ 'VRTeam': "{{ vivareal_project_team }}",
+ 'VREnv': "{{ vivareal_project_env }}",
+ 'VRProject': "{{ vivareal_project_name }}",
+ 'zabbix-metadata': "{{ zabbix_metadata }}"
+}
+
+region: 'us-east-1'
+docker_image: "{{ ansible_env['DOCKER_REPOSITORY'] }}:{{ ansible_env['CIRCLE_BUILD_NUM'] }}"
+
+ec2_sg_id: ['sg-1958ae61', 'sg-32f1634b', 'sg-ac9e63d4']
+ec2_vpc_subnet_id: subnet-0959b37f
+ec2_asg_subnets: ['subnet-f2fff3ab', 'subnet-e859b39e', 'subnet-645fff59'] #Subnet BACK
+ec2_vpc_id: 'vpc-202e7845'
+ec2_key_name: 'master_virginia' # http://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+ec2_instance_type: 't2.small'
+ec2_instance_profile_name: 'aws-elasticbeanstalk-ec2-role' #http://docs.aws.amazon.com/pt_br/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html
+ec2_ami_image_id: 'ami-67a3a90d'
+ec2_lc_user_data: |
+  docker run -p "80:80" --restart=always "{{ docker_image }}"
+
+aws_elb_subnets: ['subnet-cdfff394', 'subnet-0959b37f', 'subnet-7d5fff40']
+aws_elb_security_group_ids: ['sg-a25ea6db']
+slack_channel_notify: 'teste_slack'
+slack_token: "{{ ansible_env['SLACK_TOKEN'] }}"

@@ -1,0 +1,8 @@
+- src: VivaReal.aws-elb
+  version: 0.1.0
+- src: VivaReal.aws-asg
+  version: 0.1.0
+- src: VivaReal.aws-lc
+  version: 0.1.0
+- src: VivaReal.slack-notify
+  version: 0.1.0

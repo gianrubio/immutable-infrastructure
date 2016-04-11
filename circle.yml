@@ -1,0 +1,21 @@
+machine:
+  python:
+    version: 2.7.10
+  services:
+    - docker
+  hosts:
+    docker: 127.0.0.1
+
+dependencies:
+  pre:
+    - docker login -e myemail@docker.com -u myuser-p mypass
+    - pip install ansible>=2.0.1 boto
+  override:
+      - docker build -t vivareal/sample-app:$CIRCLE_BUILD_NUM .
+      - docker push vivareal/sample-app:$CIRCLE_BUILD_NUM
+
+deployment:
+  production:
+    branch: master
+      - cd ansible && ansible-galaxy install --force -r requirements.yml -vvvv
+      - export ENV=PROD && export RAILS_ENV=production && cd ansible && ansible-playbook -vvvv main.yaml
