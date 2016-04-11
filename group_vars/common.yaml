@@ -9,8 +9,7 @@ aws_resource_tags: {
  'Name': "{{ vivareal_project_build }}",
  'VRTeam': "{{ vivareal_project_team }}",
  'VREnv': "{{ vivareal_project_env }}",
- 'VRProject': "{{ vivareal_project_name }}",
- 'zabbix-metadata': "{{ zabbix_metadata }}"
+ 'VRProject': "{{ vivareal_project_name }}"
 }
 
 region: 'us-east-1'
