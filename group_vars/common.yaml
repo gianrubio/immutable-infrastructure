@@ -2,7 +2,7 @@ vivareal_project_name: 'immutable-infraestructure'
 vivareal_build_version: "{{ ansible_env['CIRCLE_BUILD_NUM'] }}"
 vivareal_project_build: "{{ vivareal_project_name }}-{{ vivareal_build_version}}"
 vivareal_project_team: 'infra'
-vivareal_project_env: "{{ ansible_env['ENV'] | default('QA') }}"
+vivareal_project_env: "{{ ansible_env['ENV'] | default('PROD') }}"
 zabbix_metadata: "if-guild-ci"
 
 aws_resource_tags: {
