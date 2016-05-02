@@ -30,3 +30,10 @@ aws_elb_subnets: ['subnet-cdfff394', 'subnet-0959b37f', 'subnet-7d5fff40']
 aws_elb_security_group_ids: ['sg-a25ea6db']
 slack_channel_notify: 'teste_slack'
 slack_token: "{{ ansible_env['SLACK_TOKEN'] }}"
+
+aws_route53_command: create
+aws_route53_zone: vivareal.info
+aws_route53_type: CNAME
+aws_route53_record: ansible.vivareal.info
+aws_route53_overwrite: True
+

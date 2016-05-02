@@ -5,4 +5,6 @@
 - src: VivaReal.aws-lc
   version: 0.1.0
 - src: VivaReal.slack-notify
+  version: 0.1.1
+- src: VivaReal.aws-route53
   version: 0.1.0

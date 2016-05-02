@@ -8,4 +8,5 @@
     - role: VivaReal.aws-lc
     - role: VivaReal.aws-elb
     - role: VivaReal.aws-asg
+    - { role: VivaReal.aws-route53, aws_route53_value: "{{ aws_elb_dns_name }}" }
     - role: VivaReal.slack-notify
