@@ -1,5 +1,8 @@
 sudo: false
-before_install:
-  - apt-get install openvpn
-  - apt-get install openswan
+addons:
+  apt:
+    packages:
+      - openvpn
+      - openswan
+before_script:
   - ipsec verify
