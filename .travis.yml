@@ -4,5 +4,5 @@ addons:
     packages:
       - openvpn
       - openswan
-before_script:
+script:
   - ipsec verify
